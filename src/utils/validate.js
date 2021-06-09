@@ -59,10 +59,23 @@ export function validatePhoneTwo(rule, value, callback) {
 export function validatePhone(rule, value, callback) {
   const reg = /^[1][3,4,5,7,8][0-9]{9}$/
   if (value === '' || value === undefined || value == null) {
-    callback()
+    callback(new Error('请输入手机号码'))
   } else {
     if ((!reg.test(value)) && value !== '') {
       callback(new Error('请输入正确的手机号码'))
+    } else {
+      callback()
+    }
+  }
+}
+/* 姓名*/
+export function validateName(rule, value, callback) {
+  const reg = /^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\.\s]{2,20})$/
+  if (value === '' || value === undefined || value == null) {
+    callback(new Error('请输入姓名'))
+  } else {
+    if ((!reg.test(value)) && value !== '') {
+      callback(new Error('请输入正确的姓名'))
     } else {
       callback()
     }
