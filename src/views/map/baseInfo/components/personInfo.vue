@@ -72,6 +72,7 @@
 
 <script>
 import yichun from '@/api/api'
+
 import { validatePhone,validateName } from '@/utils/validate'
 export default {
   name: "personInfo",
