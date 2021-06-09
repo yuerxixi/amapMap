@@ -1,0 +1,19 @@
+const router1 = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('views/user/login'),
+    meta: {
+      title: '登录'
+    }
+  },
+  {
+    path: '/baiduMap',
+    name: 'baiduMap',
+    component: () => import('views/map/baiduMap'),
+    meta: {
+      title: '地图'
+    }
+  },
+]
+export default router1

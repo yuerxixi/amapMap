@@ -1,0 +1,52 @@
+<template>
+  <div id="app">
+    <div class="box">
+      <!-- <md-water-mark class="text-container" :content="markContent" spacing="10vw"> -->
+      <transition name="fademap">
+        <router-view/>
+      </transition>
+      <!-- </md-water-mark> -->
+    </div>
+  </div>
+</template>
+<script>
+// import { Toast } from 'mand-mobile'
+export default {
+  components: {
+  },
+  mounted () {
+    //console.log(window.location.href);
+  },
+  methods: {
+
+  }
+}
+</script>
+
+<style>
+@import "style/reset.css";
+.box {
+  width: 100%;
+  /* height: 1080px; */
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  color: #555555;
+  font-size: 24px;
+}
+.text-container {
+  background: #fff;
+}
+.fademap-enter {
+  opacity: 0;
+}
+.fademap-enter-active {
+  transition: all 0.2s;
+}
+/* .fademap-leave-to {
+  opacity: 0;
+}
+.fademap-leave-active {
+  transition: all 0.3s;
+} */
+</style>

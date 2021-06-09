@@ -1,0 +1,50 @@
+/**
+ * Created by zhengshufa on 2018/7/31.
+ */
+import axios from 'axios'
+import qs from 'qs'
+import router from '../router/index'
+
+
+
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.withCredentials=true;
+const config = {
+  headers:{'Content-Type':'multipart/form-data'}
+};
+
+// let base = '/cstool/';
+let base = '';
+export const yichun = {
+
+}
+//判断token过期
+let tokenIsMissed=function(token,code){
+  let user=JSON.stringify({token:token});
+  sessionStorage.setItem("user",user);
+  if(code==300){
+    sessionStorage.removeItem("user");
+    router.push({ path: "/login" });
+  }
+}
+
+//登录
+yichun.login = params => { 
+  return axios.post(`${base}login/login`,qs.stringify(params,{ indices: false })).then(
+    res => res.data
+)}
+
+yichun.personAdd = params => { 
+  return axios.post(`${base}person/add`,qs.stringify(params,{ indices: false })).then((res) => {
+    tokenIsMissed(res.data.data.token,res.data.code);
+    return res.data
+  }
+)}
+
+
+
+
+
+
+
+
